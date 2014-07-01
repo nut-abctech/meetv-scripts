@@ -1,0 +1,32 @@
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# export PERL5LIB
+TMP_PATH=""
+TMP_PERL5LIB=""
+for X in `ls -d $HOME/projects/meetv/*/{lib,bin,script}`; do
+    case $X in
+        *lib)
+            TMP_PERL5LIB="$X:$TMP_PERL5LIB"
+        ;;
+        *bin|*script)
+            TMP_PATH="$X:$TMP_PATH"
+        ;;
+    esac
+done
+export PATH=$TMP_PATH$PATH
+export PERL5LIB=$TMP_PERL5LIB$PERL5LIB
+
+# divert perl lib to meetv-local-lib
+eval $(perl -I$HOME/perl5/lib/perl5
+-Mlocal::lib=$HOME/projects/meetv/meetv-local-lib)
