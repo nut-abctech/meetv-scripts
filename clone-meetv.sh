@@ -7,6 +7,10 @@ MEETV_WS="https://github.com/startsiden/meetv-ws.git"
 MEETV_WS_CLIENT="https://github.com/startsiden/meetv-ws-client.git"
 MEETV_WEBX="https://github.com/startsiden/meetv-webx.git"
 
+#Customer self-service
+MEETV_CSS="https://github.com/startsiden/meetv-css.git"
+MEETV_CSS_SCHEMA="https://github.com/startsiden/meetv-css-schema.git"
+
 echo "Meetv Repositories clone."
 echo "####NOTE. Ensure you have the permission to access meetv private repo"
 echo "####Start cloning meetv-local-lib"
@@ -31,3 +35,8 @@ echo "####Start cloning meetv-webx"
 git clone "$MEETV_WEBX"
 echo "####Finished cloning meetv-webx"
 
+git clone "$MEETV_CSS"
+echo "####Finished cloning meetv-css"
+
+git clone "$MEETV_CSS_SCHEMA"
+echo "####Finished cloning meetv-css-schema"
